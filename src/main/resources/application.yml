@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db-espace.cx4caicice5e.ap-northeast-2.rds.amazonaws.com:3306/espace?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
+    #  url: jdbc:mysql://localhost:8080/everytime?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul?useSSL=false
+    username: admin
+    password: hyun1203 # ${LOCAL_DB_PS:dearsPW}
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        database-platform: org.hibernate.dialect.MySQL8Dialect
+        show_sql: true
+        format_sql: false
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
