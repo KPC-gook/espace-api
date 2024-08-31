@@ -51,4 +51,4 @@ jobs:
 
     - name: Deploy to ECS
       run: |
-        aws ecs update-service --cluster arn:aws:ecs:ap-northeast-2:058264451561:cluster/prod-espace-cluster --service prod-espace-service --force-new-deployment
+        aws ecs update-service --cluster prod-espace-cluster --service prod-espace-service --force-new-deployment
