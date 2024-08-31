@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df882fda-910a-4388-b395-b303c0167eab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/config/FirebaseConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/reponse/ResponseCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/reponse/ResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/reponse/ResponseUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/serviceAccountKey.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/advertisement/controller/AdvertisementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/advertisement/controller/AdvertisementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/user/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,6 +217,7 @@
       <workItem from="1723958661506" duration="2192000" />
       <workItem from="1724027395897" duration="620000" />
       <workItem from="1725067033524" duration="146000" />
+      <workItem from="1725071941994" duration="39000" />
     </task>
     <servers />
   </component>
