@@ -51,4 +51,4 @@ jobs:
 
     - name: Deploy to ECS
       run: |
-        aws ecs update-service --cluster prod-espace-cluster --service prod-espace-service --force-new-deployment
+        aws ecs update-service --cluster prod-espace-cluster --service prod-espace-api-service --force-new-deployment
