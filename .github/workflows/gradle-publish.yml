@@ -1,0 +1,54 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will build a package using Gradle and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Publishing-using-gradle
+
+name: Deploy to ECS
+
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 push 될 때 실행
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'adopt'
+        java-version: '17'
+      
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-2
+
+    - name: Log in to Amazon ECR
+      run: |
+        aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 058264451561.dkr.ecr.ap-northeast-2.amazonaws.com
+
+    - name: Build Docker image
+      run: |
+        docker build -t prod-espace-api .
+
+    - name: Tag Docker image
+      run: |
+        docker tag prod-espace-api:latest 058264451561.dkr.ecr.ap-northeast-2.amazonaws.com/prod-espace-api:latest
+
+    - name: Push Docker image to ECR
+      run: |
+        docker push 058264451561.dkr.ecr.ap-northeast-2.amazonaws.com/prod-espace-api:latest
+
+    - name: Deploy to ECS
+      run: |
+        aws ecs update-service --cluster arn:aws:ecs:ap-northeast-2:058264451561:cluster/prod-espace-cluster --service prod-espace-service --force-new-deployment
