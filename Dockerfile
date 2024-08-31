@@ -1,4 +1,4 @@
-FROM bellsoft/liberica-openjdk-alpine:17
+FROM openjdk:17-alpine
 
 CMD ["./gradlew", "clean", "build"]
 
