@@ -17,25 +17,26 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
+    public User getUserById(String uid) {
+        return userRepository.findById(uid).orElse(null);
     }
 
     public User createUser(User user) {
         return userRepository.save(user);
     }
 
-    public User updateUser(Long id, User user) {
-        User existingUser = userRepository.findById(id).orElse(null);
+    public User updateUser(String uid, User user) {
+        User existingUser = userRepository.findById(uid).orElse(null);
         if (existingUser != null) {
-            existingUser.setName(user.getName());
-            existingUser.setEmail(user.getEmail());
+//            existingUser.set(user.getTitle());
+//            existingUser.setUrl(user.getUrl());
+//            existingUser.setImage(user.getImage());
             return userRepository.save(existingUser);
         }
         return null;
     }
 
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+    public void deleteUser(String uid) {
+        userRepository.deleteById(uid);
     }
 }

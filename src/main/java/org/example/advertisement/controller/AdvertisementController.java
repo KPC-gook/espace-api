@@ -2,6 +2,8 @@ package org.example.advertisement.controller;
 
 import org.example.advertisement.domain.Advertisement;
 import org.example.advertisement.service.AdvertisementService;
+import org.example.reponse.ResponseDto;
+import org.example.reponse.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +17,17 @@ public class AdvertisementController {
     private AdvertisementService advertisementService;
 
     @GetMapping
-    public List<Advertisement> getAllAdvertisements() {
-        return advertisementService.getAllAdvertisements();
+    public ResponseDto<List<Advertisement>> getAllAdvertisements() {
+        List<Advertisement> ret = advertisementService.getAllAdvertisements();
+
+        return ResponseUtil.SUCCESS("광고 조회에 성공하였습니다.", ret);
     }
 
     @GetMapping("/{id}")
-    public Advertisement getAdvertisementById(@PathVariable Long id) {
-        return advertisementService.getAdvertisementById(id);
+    public ResponseDto<Advertisement> getAdvertisementById(@PathVariable Long id) {
+        Advertisement ret = advertisementService.getAdvertisementById(id);
+
+        return ResponseUtil.SUCCESS("광고 조회에 성공하였습니다.", ret);
     }
 
     @PostMapping

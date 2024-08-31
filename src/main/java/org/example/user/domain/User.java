@@ -13,9 +13,8 @@ import java.sql.Date;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long id;
+    @Column(name = "uid")
+    private String uid;
 
     @Column
     private String name;
@@ -24,7 +23,13 @@ public class User {
     private String email;
 
     @Column
-    private String phoneNumber;
+    private String phone;
+
+    @Column
+    private Date birth;
+
+    @Column
+    private String gender;
 
     @Column
     @CreatedBy

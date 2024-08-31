@@ -1,11 +1,16 @@
 package org.example.user.controller;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseToken;
+import com.google.firebase.auth.UserRecord;
 import org.example.user.domain.User;
 import org.example.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/users")
@@ -18,10 +23,18 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
-    
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
+
+    @GetMapping("/{uid}")
+    public User getUserById(@PathVariable String uid) {
+        return userService.getUserById(uid);
+    }
+
+    @GetMapping("/token/{idToken}")
+    public User getUserByToken(@PathVariable String idToken) throws FirebaseAuthException {
+        FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(idToken);
+        String uid = decodedToken.getUid();
+
+        return userService.getUserById(uid);
     }
 
     @PostMapping
@@ -29,13 +42,13 @@ public class UserController {
         return userService.createUser(user);
     }
 
-    @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User user) {
-        return userService.updateUser(id, user);
+    @PutMapping("/{uid}")
+    public User updateUser(@PathVariable String uid, @RequestBody User user) {
+        return userService.updateUser(uid, user);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
+    @DeleteMapping("/{uid}")
+    public void deleteUser(@PathVariable String uid) {
+        userService.deleteUser(uid);
     }
 }
